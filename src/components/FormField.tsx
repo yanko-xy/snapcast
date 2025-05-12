@@ -9,8 +9,8 @@ const FormField = ({
 	label,
 	type = "text",
 	placeholder,
-	value,
 	onChange,
+	value,
 	as = "input",
 	options = [],
 }: FormFieldProps) => {

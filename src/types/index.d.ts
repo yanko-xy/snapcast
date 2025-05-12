@@ -20,7 +20,7 @@ declare interface FormFieldProps {
 	label: string;
 	type?: string;
 	value: string;
-	onChange: (
+	onChange?: (
 		e: ChangeEvent<
 			HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 		>
