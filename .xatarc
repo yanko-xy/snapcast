@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Chenyang-Zhao-s-workspace-4ber42.ap-southeast-2.xata.sh/db/snapcast",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}
