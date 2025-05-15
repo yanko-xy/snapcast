@@ -1,3 +1,4 @@
+import EmptyState from "@/components/EmptyState";
 import Header from "@/components/Header";
 import VideoCard from "@/components/VideoCard";
 import { dummyCards } from "@/constants";
@@ -17,17 +18,22 @@ const Page = async ({ searchParams }: SearchParams) => {
 
 			{videos?.length > 0 ? (
 				<section className="video-grid">
-					{videos[0].video.title}
-					{/* {dummyCards.map((card) => (
+					{videos.map(({ video, user }) => (
 						<VideoCard
-							key={card.id}
-							{...card}
-							visibility={card.visibility as Visibility}
+							key={video.id}
+							{...video}
+							thumbnail={video.thumbnailUrl}
+							userImg={user?.image || ""}
+							username={user?.name || "XY"}
 						/>
-					))} */}
+					))}
 				</section>
 			) : (
-				<div>EMPTY</div>
+				<EmptyState
+					icon="/assets/icons/video.svg"
+					title="No Videos Found"
+					description="Try adjusting your search"
+				/>
 			)}
 		</main>
 	);
