@@ -8,8 +8,12 @@ import Link from "next/link";
 import React from "react";
 import DropdownList from "@/components/DropdownList";
 import RecordScreen from "./RecordScreen";
+import { withI18N } from "@/wrapper/I18NWrapper";
 
-const Header = ({ title, subHeader, userImg }: SharedHeaderProps) => {
+const Header = (
+	{ title, subHeader, userImg }: SharedHeaderProps,
+	t: I18NFunction
+) => {
 	return (
 		<header className="header">
 			<section className="header-container">
@@ -45,10 +49,7 @@ const Header = ({ title, subHeader, userImg }: SharedHeaderProps) => {
 
 			<section className="search-filter">
 				<div className="search">
-					<input
-						type="text"
-						placeholder="Search for videos, tags, folders ..."
-					/>
+					<input type="text" placeholder={t("home.search")} />
 					<Image
 						src="/assets/icons/search.svg"
 						alt="search"
@@ -62,4 +63,4 @@ const Header = ({ title, subHeader, userImg }: SharedHeaderProps) => {
 	);
 };
 
-export default Header;
+export default withI18N<SharedHeaderProps>(Header);

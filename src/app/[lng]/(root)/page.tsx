@@ -3,9 +3,15 @@ import Header from "@/components/Header";
 import VideoCard from "@/components/VideoCard";
 import { dummyCards } from "@/constants";
 import { getAllVideos } from "@/lib/actions/video";
+import { useTranslation } from "@/lib/i18n";
+import { withI18N } from "@/wrapper/I18NWrapper";
+import { headers } from "next/headers";
 import Image from "next/image";
 
-const Page = async ({ searchParams }: SearchParams) => {
+const Page = async (
+	{ searchParams, params }: SearchParams,
+	t: I18NFunction
+) => {
 	const { query, filter, page } = await searchParams;
 	const { videos, pagination } = await getAllVideos(
 		query,
@@ -14,7 +20,7 @@ const Page = async ({ searchParams }: SearchParams) => {
 	);
 	return (
 		<main className="wrapper page">
-			<Header title="All Videos" subHeader="Public Library" />
+			<Header title={t("home.title")} subHeader={t("home.subtitle")} />
 
 			{videos?.length > 0 ? (
 				<section className="video-grid">
@@ -39,4 +45,4 @@ const Page = async ({ searchParams }: SearchParams) => {
 	);
 };
 
-export default Page;
+export default withI18N(Page);

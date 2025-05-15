@@ -15,6 +15,8 @@ type VideoFormValues = {
 	visibility: "public" | "private";
 };
 
+declare type I18NFunction = (key: string) => string;
+
 declare interface FormFieldProps {
 	id: string;
 	label: string;
@@ -224,17 +226,11 @@ declare interface SharedHeaderProps {
 	userImg?: string;
 }
 
-declare interface SharedHeaderProps {
-	subHeader: string;
-	title: string;
-	userImg?: string;
-}
-
 declare interface Params {
 	params: Promise<Record<string, string>>;
 }
 
-declare interface SearchParams {
+declare interface SearchParams extends Params {
 	searchParams: Promise<Record<string, string | undefined>>;
 }
 
